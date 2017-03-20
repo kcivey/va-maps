@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Virginia electoral maps</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <style>
+        #map{ height: 600px; }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/topojson-client@2.1.0/dist/topojson-client.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"
+            integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+            crossorigin="anonymous"></script>
+    <script src="js/L.TopoJSON.js"></script>
+    <script>
+        jQuery(function () {
+            var map = L.map('map');
+            L.tileLayer(
+                '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    attribution: 'Map data © <a href="//openstreetmap.org">OpenStreetMap</a> contributors',
+                    maxZoom: 18,
+                    opacity: 0.5
+                }
+            ).addTo(map);
+
+            $.getJSON('va-senate-districts.topo.json')
+                .done(addTopoData);
+
+            function addTopoData(topoData) {
+                var topoLayer = L.topoJson(topoData).addTo(map);
+                map.fitBounds(topoLayer.getBounds());
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>

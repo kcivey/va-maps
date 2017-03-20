@@ -1,0 +1,18 @@
+{
+  "name": "va-maps",
+  "version": "0.0.1",
+  "description": "Maps of Virginia districts for elections",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcivey/va-maps.git"
+  },
+  "author": "Keith C. Ivey <keith@iveys.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcivey/va-maps/issues"
+  },
+  "homepage": "https://github.com/kcivey/va-maps#readme",
+  "dependencies": {
+    "topojson": "^2.2.0"
+  }
+}
